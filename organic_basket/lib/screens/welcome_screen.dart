@@ -16,11 +16,11 @@ class Welcomescreen extends StatelessWidget{
             ),
             buildTitle(),
             Spacer(),
-            buildButton('Sign Up',mq),
+            buildButton(context,'Sign Up',mq),
             SizedBox(
               height: mq.height*0.025,
             ),
-            buildButton('Login',mq),
+            buildButton(context,'Login',mq),
             Spacer(),
           ],
 
@@ -38,7 +38,7 @@ class Welcomescreen extends StatelessWidget{
     );
   }
 
-  Widget buildButton(String type,Size mq){
+  Widget buildButton(BuildContext context,String type,Size mq){
     return  SizedBox(
       height: mq.height*0.07,
       width: mq.width*0.8,
@@ -50,7 +50,14 @@ class Welcomescreen extends StatelessWidget{
             borderRadius: BorderRadius.circular(40),
           ),
         ),
-        onPressed:(){},
+        onPressed:(){
+          if(type == 'Log in') {
+            Navigator.of(context).pushReplacementNamed('./login-screen');
+          }
+          else{
+            Navigator.of(context).pushReplacementNamed('./signup-screen');
+          }
+        },
         child: Text(type,
           style:TextStyle(
               fontWeight: FontWeight.bold,
